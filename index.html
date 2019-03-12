@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="js/web3.min.js"></script>
+  <script src="js/key.js"></script>
+  <script src="js/blockchainRequest.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet'/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="js/map.js"></script>
+
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      width: 500px;
+      height: 400px;
+    }
+  </style>
+  <title>Oracle</title>
+</head>
+
+<body>
+  <div class="container">
+    <br>
+    <h4>Oracle that updates the price of diesel in the smart contract according to the latitude, longitude and zoom of a
+      map.</h4>
+    <br>
+
+    <div class="row" style="justify-content: center;">
+      <div class="col-md-6">
+        <div id='map'></div>
+      </div>
+    </div>
+    <br>
+    <div class="row" style="justify-content: center;">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Latitud:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="latitud" placeholder="Introduce la latitud" name="latitud">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="pwd">Longitud:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="longitud" placeholder="Introduce la longitud" name="longitud">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="zoom">Zoom:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="zoom" placeholder="Introduce el zoom" name="zoom">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="justify-content: center;">
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary" onclick="throwUpdateEvent();">Trigger contract event</button>
+        </div>
+        <br>
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary" onclick="getDieselValueFromContract();">Check Smart
+            Contract</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</body>
+
+</html>
